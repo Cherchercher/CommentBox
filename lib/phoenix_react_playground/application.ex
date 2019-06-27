@@ -11,7 +11,7 @@ defmodule PhoenixReactPlayground.Application do
       # Start the Ecto repository
       PhoenixReactPlayground.Repo,
       # Start the endpoint when the application starts
-      PhoenixReactPlaygroundWeb.Endpoint
+      PhoenixReactPlaygroundWeb.Endpoint,
       # Starts a worker by calling: PhoenixReactPlayground.Worker.start_link(arg)
       # {PhoenixReactPlayground.Worker, arg},
     ]

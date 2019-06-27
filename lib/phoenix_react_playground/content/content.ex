@@ -17,7 +17,7 @@ defmodule PhoenixReactPlayground.Content do
       [%Comment{}, ...]
 
   """
-  def list_comments do
+  def list_comments() do
     Repo.all(Comment)
   end
 
