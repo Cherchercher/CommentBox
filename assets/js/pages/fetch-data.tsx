@@ -23,16 +23,21 @@ interface FetchDataExampleState {
 export default class FetchDataPage extends React.Component<
   {},
   FetchDataExampleState
-> {
+  > {
   constructor(props: {}) {
     super(props);
     this.state = { languages: [], loading: true };
-
     // Get the data from our API.
     fetch('/api/languages')
       .then(response => response.json() as Promise<ApiResponse>)
       .then(data => {
         this.setState({ languages: data.data, loading: false });
+      });
+
+    fetch('/api/aylien/sentiment_en/hi')
+      .then(response => response.json() as Promise<ApiResponse>)
+      .then(data => {
+        console.log(data)
       });
   }
 
@@ -63,8 +68,8 @@ export default class FetchDataPage extends React.Component<
         <em>Loading...</em>
       </p>
     ) : (
-      FetchDataPage.renderLanguagesTable(this.state.languages)
-    );
+        FetchDataPage.renderLanguagesTable(this.state.languages)
+      );
 
     return (
       <Main>

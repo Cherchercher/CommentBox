@@ -9,7 +9,6 @@ defmodule PhoenixReactPlaygroundWeb.RoomsChannel do
     Process.flag(:trap_exit, true)
     :timer.send_interval(5000, :ping)
     send(self, {:after_join, message})
-
     {:ok, socket}
   end
 
@@ -18,11 +17,7 @@ defmodule PhoenixReactPlaygroundWeb.RoomsChannel do
   end
 
   def handle_info({:after_join, msg}, socket) do
-    Content.list_comments()
-    |> Enum.each(fn msg -> push(socket, "shout", %{
-      name: msg.name,
-      message: msg.content,
-    }) end)
+
     broadcast! socket, "user:entered", %{user: msg["user"]}
     push socket, "join", %{status: "connected"}
   {:noreply, socket} # :noreply

@@ -17,6 +17,8 @@ defmodule PhoenixReactPlaygroundWeb.Router do
     pipe_through :api
     resources "/comments", CommentController
     resources "/languages", LanguageController, except: [:new, :edit]
+    get "/aylien", AylienController, :index
+    get "/aylien/sentiment_en/:text", AylienController, :sentiment_en
   end
 
   scope "/", PhoenixReactPlaygroundWeb do
