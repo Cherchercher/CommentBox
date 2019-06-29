@@ -1,24 +1,30 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
 
+import { Link } from 'react-router-dom';
+import React from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+
+const styles = {
+  title: {
+    flexGrow: 1,
+  }
+}
 const Header: React.FC = () => (
-  <header>
-    <section className="container">
-      <nav role="navigation">
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/counter'>Login</Link>
-          </li>
-          <li>
-            <Link to='/fetch-data'>About</Link>
-          </li>
-        </ul>
-      </nav>
-    </section>
-  </header>
+  <div >
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" style={styles.title}>
+          Comment Box
+        </Typography>
+        <Button color="inherit" href="/">Home</Button>
+        <Button color="inherit" href="/counter">Login</Button>
+        <Button color="inherit" href="/fetch-data">About</Button>
+      </Toolbar>
+    </AppBar>
+  </div>
 );
 
 export default Header;

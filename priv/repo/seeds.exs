@@ -18,6 +18,7 @@ defmodule PhoenixReactPlayground.DatabaseSeeder do
 
   # Clear the database first before seeding
   Repo.delete_all Language
+  Repo.delete_all Comment
 
   Repo.insert! %Language{
     name: "English",
@@ -37,7 +38,7 @@ defmodule PhoenixReactPlayground.DatabaseSeeder do
     Repo.insert! %Comment{
     name: "Cher",
     content: "Hey guys, what do you think about my first pheonix app?",
-    sentiment: "Neutral"
+    sentiment: "neutral"
   }
 
 

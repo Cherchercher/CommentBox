@@ -33,12 +33,6 @@ export default class FetchDataPage extends React.Component<
       .then(data => {
         this.setState({ languages: data.data, loading: false });
       });
-
-    fetch('/api/aylien/sentiment_en/hi')
-      .then(response => response.json() as Promise<ApiResponse>)
-      .then(data => {
-        console.log(data)
-      });
   }
 
   private static renderLanguagesTable(languages: Language[]) {

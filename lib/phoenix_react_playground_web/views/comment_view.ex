@@ -1,7 +1,3 @@
-defmodule PhoenixReactPlaygroundWeb.CommentView do
-  use PhoenixReactPlaygroundWeb, :view
-end
-
 
 defmodule PhoenixReactPlaygroundWeb.CommentView do
   use PhoenixReactPlaygroundWeb, :view
@@ -19,6 +15,7 @@ defmodule PhoenixReactPlaygroundWeb.CommentView do
     %{id: comment.id,
       name: comment.name,
       content: comment.content,
-      sentiment: comment.sentiment}
+      sentiment: comment.sentiment,
+      strength: comment.strength}
   end
 end

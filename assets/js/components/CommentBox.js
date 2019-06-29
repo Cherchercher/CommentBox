@@ -24,15 +24,29 @@ class CommentBox extends Component {
     this.channel = socket.channel("rooms:lobby", {});
   }
 
-
-  componentWillMount() {
+  componentDidMount() {
     this.channel.join()
       .receive("ok", response => { console.log("Joined successfully", response) })
+    this.channel.on("load:msg", payload => {
+      let content = payload;
+      content._id = payload.created_at;
+      console.log(content);
+      const data = [...this.state.data, content];
+      this.setState({ data })
+      console.log(data);
+    })
+  }
+
+  //created_at 2019-06-29T10:04:32
+  componentWillMount() {
     this.channel.on("new:msg", payload => {
-      console.log(payload);
-      this.setState({
-        serverMessages: this.state.serverMessages.concat(payload.body)
-      })
+      let content = payload;
+      content._id = Date.now();
+      content.key = payload.id;
+      console.log(content);
+      const data = [...this.state.data, content];
+      this.setState({ data })
+      console.log(data);
     })
   }
 
@@ -46,20 +60,33 @@ class CommentBox extends Component {
     e.preventDefault();
     const { author, comment } = this.state;
     if (!author || !comment) return;
-
-    const data = [...this.state.data, { author, comment, _id: Date.now().toString() }];
-    this.setState({ data });
-    console.log(data);
-    this.channel.push("new:msg", { user: author, body: comment })
+    let query = comment.replace(/ /g, "+");
+    let url = encodeURI("/api/aylien/sentiment_en/" + query);
+    let message = { name: author, content: comment, senti: "unknown", strength: 1 }
+    try {
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const body = JSON.parse(data.body);
+          const senti = body.polarity;
+          const polarity_confidence = body.polarity_confidence;
+          const msg = { name: author, content: comment, sentiment: senti, strength: polarity_confidence }
+          this.channel.push("new:msg", msg)
+        });
+    } catch (e) {
+      console.log(e);
+      this.channel.push("new:msg", message)
+    }
   }
 
   render() {
+    const { data } = this.state;
     return (
       <div className="container">
         <div className="comments">
           <h2>Comments:</h2>
           <CommentList
-            data={this.state.data}
+            data={data}
           />
         </div>
         <div className="form">

@@ -15,9 +15,9 @@ defmodule PhoenixReactPlaygroundWeb.AylienController do
     query = "text=" <> text
     language = "language=" <> "en"
     mode = "mode" <> "tweet"
-    url =  "#{aylien_api_v1}?#{query}&#{mode}&#{language}"
+    url =  URI.encode("#{aylien_api_v1}?#{query}&#{mode}&#{language}")
     headers = [{"X-AYLIEN-TextAPI-Application-Key", "7dc5702311fa3f50a9d695e2d53fe170"}, {"X-AYLIEN-TextAPI-Application-ID", "167de1b7"}, {"Accept", "application/json"}]
-    case HTTPoison.post(url,[],headers) do
+    case HTTPoison.post(url, [], headers) do
     {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
       json conn, %{"success": true, "body": body}
     {:ok, %HTTPoison.Response{status_code: 404}} ->

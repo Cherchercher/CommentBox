@@ -2,12 +2,13 @@ defmodule PhoenixReactPlaygroundWeb.RoomsChannel do
   use Phoenix.Channel
   require Logger
 
+  import Ecto.Query, warn: false
+  alias PhoenixReactPlayground.Repo
   alias PhoenixReactPlayground.Content
   alias PhoenixReactPlayground.Content.Comment
 
   def join("rooms:lobby", message, socket) do
     Process.flag(:trap_exit, true)
-    :timer.send_interval(5000, :ping)
     send(self, {:after_join, message})
     {:ok, socket}
   end
@@ -17,15 +18,16 @@ defmodule PhoenixReactPlaygroundWeb.RoomsChannel do
   end
 
   def handle_info({:after_join, msg}, socket) do
-
-    broadcast! socket, "user:entered", %{user: msg["user"]}
-    push socket, "join", %{status: "connected"}
+     Content.list_comments()
+    |> Enum.each(fn msg -> push(socket, "load:msg", %{
+      name: msg.name,
+      content: msg.content,
+      strength: msg.strength,
+      sentiment: msg.sentiment,
+      created_at: msg.inserted_at,
+      id: msg.id
+    }) end)
   {:noreply, socket} # :noreply
-  end
-
-  def handle_info(:ping, socket) do
-    push socket, "new:msg", %{user: "SYSTEM", body: "ping"}
-    {:noreply, socket}
   end
 
   def terminate(reason, _socket) do
@@ -33,8 +35,20 @@ defmodule PhoenixReactPlaygroundWeb.RoomsChannel do
     :ok
   end
 
-  def handle_in("new:msg", msg, socket) do
-    broadcast! socket, "new:msg", %{user: msg["user"], body: msg["body"]}
-    {:reply, {:ok, %{msg: msg["body"]}}, assign(socket, :user, msg["user"])}
+  def handle_in("load:msg", payload, socket) do
+    broadcast! socket, "load:msg", payload
+    {:noreply, socket}
+  end
+
+
+  def handle_in("new:msg", payload, socket) do
+    with {:ok, %Comment{} = comment} <- Content.create_comment(payload) do
+      broadcast! socket, "new:msg", payload
+      {:noreply, socket}
+    end
   end
 end
+
+
+
+

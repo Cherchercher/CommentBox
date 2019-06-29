@@ -13,7 +13,9 @@ const Comment = props => (
         <ReactMarkdown source={props.children} />
       </div>
       <div className="singleCommentButtons">
-        <span className="time">{moment(props.timestamp).fromNow()}</span>
+        <span className="time">{moment.utc(props.timestamp).from(moment.utc())}</span>
+        <a>{props.sentiment}</a>
+        <a>translate</a>
       </div>
     </div>
   </div>
