@@ -45,7 +45,6 @@ Visit [`localhost:4000`](http://localhost:4000) from your browser.
   * Official website: http://www.phoenixframework.org/
   * Guides: http://phoenixframework.org/docs/overview
   * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
   * Source: https://github.com/phoenixframework/phoenix
   * Boiler Plate: https://github.com/resir014/phoenix_react_playground
 
