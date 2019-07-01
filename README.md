@@ -4,19 +4,22 @@
 > Built with Pheonix, React, and Aylien. Language support: Chinese, English.
         
 ## Features
-   1. Real-time update:new messages get broadcasted to subscribors in. Used channels.
+   1. Real-time update:new messages get broadcasted to subscribors. Used channels.
    
    2. Language Dectection: languages used in comments are detected. Used Regex.
    
    3. Sentiment Analysis: sentiment of comments is displayed. Used Aylien.
    
-   4. Language Translation: Chinese can be translated into English Used Fuxi API.
+   4. Language Translation: Chinese can be translated into English. Used Fuxi API.
 
 ## Todos
-   User authentications 
-   Create and update topics. Associate topics with comments.
-   Set intervals for hitting submit button
-   Sentiment Analysis in Chinese
+   1. User authentication
+   
+   2.Create and update topics. Associate topics with comments.
+   
+   3. Set intervals for hitting submit button
+   
+   4. Sentiment Analysis in Chinese
 
 ## Future improvements
    Use Dialogflow to create domain expert to answer questions on topics.
