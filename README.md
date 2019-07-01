@@ -15,7 +15,7 @@
 ## Todos
    1. User authentication
    
-   2.Create and update topics. Associate topics with comments.
+   2. Create and update topics. Associate topics with comments.
    
    3. Set intervals for hitting submit button
    
