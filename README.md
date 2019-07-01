@@ -1,13 +1,16 @@
 
 # Comment Box
->  a comment box web application (the type that were all over the early 2000?s
-internet, and have since largely been replaced by Disqus). 
-
+> A modern twist to the vintage comment box web application. Comment, give and recieve feedbacks on topics.
+> Built with Pheonix, React, and Aylien. Language support: Chinese, English.
+        
 ## Features
-   Real-time update:new messages get broadcasted to subscribors in. Used channels.
-   Language Dectection: languages used in comments are detected. Used Regex.
-   Sentiment Analysis: sentiment of comments is displayed. Used Aylien.
-   Language Translation: Chinese can be translated into English Used Fuxi API.
+   1. Real-time update:new messages get broadcasted to subscribors in. Used channels.
+   
+   2. Language Dectection: languages used in comments are detected. Used Regex.
+   
+   3. Sentiment Analysis: sentiment of comments is displayed. Used Aylien.
+   
+   4. Language Translation: Chinese can be translated into English Used Fuxi API.
 
 ## Todos
    User authentications 
