@@ -12,7 +12,7 @@ h6{font-size: 1.4rem; letter-spacing: 0; line-height: 1.2}
 
 .container{
   margin: 0 auto;
-  max-width: 80.0rem;
+  max-width: 100.0rem;
   padding: 0 2.0rem;
   position: relative;
   width: 100%
@@ -66,6 +66,10 @@ select {
   font-weight: 200;
   font-size: 120%;
 }
+
+.paper {
+  padding: 1em;
+}
 .phx-hero p:last-child {
   margin-bottom: 0;
 }
@@ -78,14 +82,12 @@ select {
   width: auto;
   display: block;
 }
-
 /* Headers */
 header {
   width: 100%;
-  background: #fdfdfd;
-  border-bottom: 1px solid #eaeaea;
   margin-bottom: 2rem;
 }
+
 header section {
   align-items: center;
   display: flex;
@@ -112,6 +114,7 @@ header nav ul {
   float: right;
   margin-top: 0;
 }
+
 
 
 @media (min-width: 40.0rem) { /* Small devices (landscape phones, 576px and up) */

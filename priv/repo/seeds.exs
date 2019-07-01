@@ -15,11 +15,17 @@ defmodule PhoenixReactPlayground.DatabaseSeeder do
   alias PhoenixReactPlayground.Repo
   alias PhoenixReactPlayground.Example.Language
   alias PhoenixReactPlayground.Content.Comment
+  alias PhoenixReactPlayground.Content.Topic
 
   # Clear the database first before seeding
   Repo.delete_all Language
   Repo.delete_all Comment
+  Repo.delete_all Topic
 
+  Repo.insert! %Topic{
+    name: "Learn Phoenix",
+    description: "Develop Phoenix apps, comment, give or receive feedbacks",
+  }
   Repo.insert! %Language{
     name: "English",
     proverb: "A penny saved is a penny earned.",
@@ -37,9 +43,9 @@ defmodule PhoenixReactPlayground.DatabaseSeeder do
 
     Repo.insert! %Comment{
     name: "Cher",
-    content: "Hey guys, what do you think about my first pheonix app?",
-    sentiment: "neutral"
+    content: "大家好，你们觉得我的第一个phoenix app如何?",
+    sentiment: "neutral",
+    language: "cn"
   }
-
 
 end

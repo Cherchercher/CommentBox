@@ -1,10 +1,22 @@
 defmodule PhoenixReactPlaygroundWeb.LanguageController do
   use PhoenixReactPlaygroundWeb, :controller
+  plug :secure
 
   alias PhoenixReactPlayground.Example
   alias PhoenixReactPlayground.Example.Language
 
   action_fallback PhoenixReactPlaygroundWeb.FallbackController
+
+  defp secure(conn, _params) do
+    user = get_session(conn, :current_user)
+    case user do
+     nil ->
+         conn |> redirect(to: "/auth/auth0") |> halt
+     _ ->
+       conn
+       |> assign(:current_user, user)
+    end
+  end
 
   def index(conn, _params) do
     languages = Example.list_languages()

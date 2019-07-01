@@ -10,6 +10,19 @@ use Mix.Config
 config :phoenix_react_playground,
   ecto_repos: [PhoenixReactPlayground.Repo]
 
+
+# Configures Ueberauth
+config :ueberauth, Ueberauth,
+  providers: [
+    auth0: { Ueberauth.Strategy.Auth0, [] },
+  ]
+
+# Configures Ueberauth's Auth0 auth provider
+config :ueberauth, Ueberauth.Strategy.Auth0.OAuth,
+domain: System.get_env("AUTH0_DOMAIN"),
+client_id: System.get_env("AUTH0_CLIENT_ID"),
+client_secret: System.get_env("AUTH0_CLIENT_SECRET")
+
 # Configures the endpoint
 config :phoenix_react_playground, PhoenixReactPlaygroundWeb.Endpoint,
   url: [host: "localhost"],

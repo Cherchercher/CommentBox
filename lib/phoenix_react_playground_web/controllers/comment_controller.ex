@@ -4,6 +4,7 @@ defmodule PhoenixReactPlaygroundWeb.CommentController do
   alias PhoenixReactPlayground.Content
   alias PhoenixReactPlayground.Content.Comment
   plug :scrub_params, "comment" when action in [:create]
+
   def index(conn, _params) do
     comments = Content.list_comments()
     render(conn, "index.json", comments: comments)

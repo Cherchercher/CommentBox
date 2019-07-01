@@ -7,10 +7,11 @@ defmodule PhoenixReactPlayground.Content.Comment do
     field :content, :string
     field :sentiment, :string
     field :strength, :float
+    field :language, :string
     timestamps()
   end
 
-  @required_fields ~w(name content sentiment strength)
+  @required_fields ~w(name content sentiment strength language)
   @optional_fields ~w()
 
   @doc false

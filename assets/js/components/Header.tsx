@@ -14,14 +14,14 @@ const styles = {
 }
 const Header: React.FC = () => (
   <div >
-    <AppBar position="static">
+    <AppBar position="static" style={{ backgroundColor: '#9b4dca' }}>
       <Toolbar>
         <Typography variant="h6" style={styles.title}>
           Comment Box
         </Typography>
         <Button color="inherit" href="/">Home</Button>
         <Button color="inherit" href="/counter">Login</Button>
-        <Button color="inherit" href="/fetch-data">About</Button>
+        <Button color="inherit" href="/about">About</Button>
       </Toolbar>
     </AppBar>
   </div>

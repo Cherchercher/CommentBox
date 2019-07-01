@@ -11,8 +11,9 @@ const CommentList = (props) => {
       key={comment._id}
       id={comment._id}
       timestamp={comment._id}
+      language={comment.language}
+      content={comment.content}
     >
-      {comment.content}
     </Comment>
   ));
   return (

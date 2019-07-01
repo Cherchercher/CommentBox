@@ -76,8 +76,11 @@
   padding: 15px 0;
 }
 
+.commets {
+  float: 'right';
+}
 .form input {
-  height: 30px;
+  height: 35px;
   padding-left: 10px;
   border: 1px solid #c1c1c1;
   margin-right: 10px;
@@ -90,8 +93,7 @@
 }
 
 .form button {
-  color: #999;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid #999;
 }
 

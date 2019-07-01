@@ -20,7 +20,7 @@ defmodule PhoenixReactPlayground.MixProject do
   def application do
     [
       mod: {PhoenixReactPlayground.Application, []},
-      extra_applications: [:logger, :runtime_tools, :httpoison]
+      extra_applications: [:ueberauth, :ueberauth_auth0, :logger, :runtime_tools, :httpoison]
     ]
   end
 
@@ -44,7 +44,11 @@ defmodule PhoenixReactPlayground.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:httpoison, "~> 1.5"},
-      {:poison, "~> 3.0"}
+      {:poison, "~> 3.0"},
+      {:ueberauth, "~> 0.4"},
+      {:ueberauth_auth0, "~> 0.3"},
+      {:comeonin, "~> 4.0"},
+      {:bcrypt_elixir, "~> 1.0"}
     ]
   end
 

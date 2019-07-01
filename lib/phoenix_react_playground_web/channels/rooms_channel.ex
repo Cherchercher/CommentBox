@@ -3,7 +3,6 @@ defmodule PhoenixReactPlaygroundWeb.RoomsChannel do
   require Logger
 
   import Ecto.Query, warn: false
-  alias PhoenixReactPlayground.Repo
   alias PhoenixReactPlayground.Content
   alias PhoenixReactPlayground.Content.Comment
 
@@ -24,6 +23,7 @@ defmodule PhoenixReactPlaygroundWeb.RoomsChannel do
       content: msg.content,
       strength: msg.strength,
       sentiment: msg.sentiment,
+      language: msg.language,
       created_at: msg.inserted_at,
       id: msg.id
     }) end)
@@ -42,7 +42,7 @@ defmodule PhoenixReactPlaygroundWeb.RoomsChannel do
 
 
   def handle_in("new:msg", payload, socket) do
-    with {:ok, %Comment{} = comment} <- Content.create_comment(payload) do
+    with {:ok, %Comment{}} <- Content.create_comment(payload) do
       broadcast! socket, "new:msg", payload
       {:noreply, socket}
     end
