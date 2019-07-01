@@ -4,8 +4,20 @@
 internet, and have since largely been replaced by Disqus). 
 
 ## Features
+   Real-time update:new messages get broadcasted to subscribors in. Used channels.
+   Language Dectection: languages used in comments are detected. Used Regex.
+   Sentiment Analysis: sentiment of comments is displayed. Used Aylien.
+   Language Translation: Chinese can be translated into English Used Fuxi API.
 
+## Todos
+   User authentications 
+   Create and update topics. Associate topics with comments.
+   Set intervals for hitting submit button
+   Sentiment Analysis in Chinese
 
+## Future improvements
+   Use Dialogflow to create domain expert to answer questions on topics.
+   
 ## Requirements
 
 * [Node.js](https://nodejs.org/en) (v8+)
